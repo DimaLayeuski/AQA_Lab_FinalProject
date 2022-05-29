@@ -53,7 +53,7 @@ public class RepositoryTests : BaseTest
         _createNewRepositoryPage.CreateRepository.Click();
         _repositoryPage.PageOpened.Should().BeTrue();
     }
-
+    
     [Test]
     [Order(2)]
     [Category("Positive")]
@@ -70,5 +70,23 @@ public class RepositoryTests : BaseTest
         Thread.Sleep(500);
         _settingPage.RenameButton.Click();
         _repositoryPage.PageOpened.Should().BeTrue();
+    }
+    
+    [Test]
+    [Order(3)]
+    [Category("Positive")]
+    [AllureSuite("Repository-UI")]
+    [AllureStep("Delete repository")]
+    public void DeleteRepository_RepositoryIsDeleted() 
+    {
+        LoginStep _loginStep = new LoginStep(_driver);
+        _loginStep.LoginWithUsernameAndPassword(Configurator.Admin.Username, Configurator.Admin.Password);
+        _mainPage.ChooseRenameRepositoryButton.Click();
+        _repositoryPage.Setting.Click();
+        _settingPage.DeleteRepositoryButton.Click();
+        _settingPage.ConfirmInputBlock.SendKeys("DimaLayeuskiAQA/RenameRepository");
+        _settingPage.ConfirmToDeleteButton.Click();
+        _mainPage.PageOpened.Should().BeTrue();
+        Assert.AreEqual(_driver.FindElements(_mainPage.CountOfLinkToRepositoriesBy).Count,2);
     }
 }
