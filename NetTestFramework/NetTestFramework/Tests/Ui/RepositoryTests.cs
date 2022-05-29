@@ -53,4 +53,22 @@ public class RepositoryTests : BaseTest
         _createNewRepositoryPage.CreateRepository.Click();
         _repositoryPage.PageOpened.Should().BeTrue();
     }
+
+    [Test]
+    [Order(2)]
+    [Category("Positive")]
+    [AllureSuite("Repository-UI")]
+    [AllureStep("Rename repository")]
+    public void RenameRepository_RepositoryIsRenamed()
+    {
+        LoginStep _loginStep = new LoginStep(_driver);
+        _loginStep.LoginWithUsernameAndPassword(Configurator.Admin.Username, Configurator.Admin.Password);
+        _mainPage.ChooseRepositoryButton.Click();
+        _repositoryPage.Setting.Click();
+        _settingPage.RepositoryName.Clear();
+        _settingPage.RepositoryName.SendKeys("RenameRepository");
+        Thread.Sleep(500);
+        _settingPage.RenameButton.Click();
+        _repositoryPage.PageOpened.Should().BeTrue();
+    }
 }
