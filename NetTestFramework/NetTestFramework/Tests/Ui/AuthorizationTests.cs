@@ -41,4 +41,17 @@ public class AuthorizationTests : BaseTest
         _loginStep.LoginWithUsernameAndPassword(Configurator.Admin.Username, Configurator.Admin.Password);
         _mainPage.PageOpened.Should().BeTrue();
     }
+
+    [Test]
+    [Category("Negative")]
+    [AllureSuite("Authorization-UI")]
+    [AllureStep("Authorize using incorrect data")]
+    [TestCase("DimaLayeuskiAQA","11111")]
+    [TestCase("", "")]
+    public void Authorization_WithIncorrectData_FaildLoginPageOpened(string username, string password)
+    {
+        LoginStep _loginStep = new LoginStep(_driver);
+        _loginStep.LoginWithIncorrectUsernameAndPassword(username, password);
+        _faildLoginPage.PageOpened.Should().BeTrue();
+    }
 }
