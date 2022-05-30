@@ -18,7 +18,7 @@ public class LoginStep
         _loginPage = new LoginPage(_driver);
     }
     
-    public MainPage LoginWithUsernameAndPassword(string username, string password)
+    public MainPage LoginWithUsernameAndPassword(string? username, string? password)
     {
         _homePage.OpenPage();
         _homePage.SignIn.Click();
