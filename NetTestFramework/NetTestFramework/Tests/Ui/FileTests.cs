@@ -82,4 +82,30 @@ public class FileTests : BaseTest
         
         _newFilePage.AddedLine.Displayed.Should().BeTrue();
     }
+    
+    [Test]
+    [Order(3)]
+    [Category("Positive")]
+    [AllureSuite("Workspace-UI")]
+    [AllureStep("Delete file")]
+    public void DeleteFile_FileIsDeleted()
+    {
+        LoginStep _loginStep = new LoginStep(_driver);
+        _loginStep.LoginWithUsernameAndPassword(Configurator.Admin.Username, Configurator.Admin.Password);
+        _mainPage.ChooseFileRepositoryButton.Click();
+
+        RepositoryPage repositoryPage = new RepositoryPage(_driver);
+        repositoryPage.NewFileLink.Click();
+        NewFilePage _newFilePage = new NewFilePage(_driver);
+        _newFilePage.DeleteFileLink.Click();
+        DeleteFilePage _deleteFilePage = new DeleteFilePage(_driver);
+        _deleteFilePage.CommitDeleteFile.SendKeys("Delete file");
+        _deleteFilePage.CommitDeleteFileButton.Click();
+        Assert.AreEqual(_driver.FindElements(_repositoryPage.NewFileLinkBy).Count,0);
+        
+        _repositoryPage.Setting.Click();
+        _settingPage.DeleteRepositoryButton.Click();
+        _settingPage.ConfirmInputBlock.SendKeys("DimaLayeuskiAQA/RepositoryForFileTest");
+        _settingPage.ConfirmToDeleteButton.Click();
+    }
 }
