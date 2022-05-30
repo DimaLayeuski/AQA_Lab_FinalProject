@@ -60,4 +60,26 @@ public class FileTests : BaseTest
         _addFilePage.CommitNewFileButton.Click();
         Assert.AreEqual(_driver.FindElements(_repositoryPage.NewFileLinkBy).Count, 1);
     }
+    
+    [Test]
+    [Order(2)]
+    [Category("Positive")]
+    [AllureSuite("Workspace-UI")]
+    [AllureStep("Change file")]
+    public void ChangeFile_FileIsChanged()
+    {
+        LoginStep _loginStep = new LoginStep(_driver);
+        _loginStep.LoginWithUsernameAndPassword(Configurator.Admin.Username, Configurator.Admin.Password);
+        _mainPage.ChooseFileRepositoryButton.Click();
+        RepositoryPage _repositoryPage = new RepositoryPage(_driver);
+        _repositoryPage.NewFileLink.Click();
+        NewFilePage _newFilePage = new NewFilePage(_driver);
+        _newFilePage.ChangeFileLink.Click();
+        EditNewFilePage _editNewFilePage = new EditNewFilePage(_driver);
+        _editNewFilePage.InputNewText.SendKeys("New text in file");
+        _editNewFilePage.CommitNewFile.SendKeys("Commit new text");
+        _editNewFilePage.CommitNewFileButton.Click();
+        
+        _newFilePage.AddedLine.Displayed.Should().BeTrue();
+    }
 }
