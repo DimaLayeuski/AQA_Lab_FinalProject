@@ -11,9 +11,11 @@ public class NewFilePage : BasePage
 
     private static readonly By DeleteFileLinkBy =
         By.XPath("//*[@class='btn-octicon btn-octicon-danger tooltipped tooltipped-nw']");
+    private static readonly By AddedLineBy = By.XPath("//*[@id='LC2']");
 
     public IWebElement ChangeFileLink => WaitService.WaitElementIsExist(ChangeFileLinkBy);
     public IWebElement DeleteFileLink => WaitService.WaitElementIsExist(DeleteFileLinkBy);
+    public IWebElement AddedLine => WaitService.WaitElementIsExist(AddedLineBy);
 
     public NewFilePage(IWebDriver driver) : base(driver)
     {

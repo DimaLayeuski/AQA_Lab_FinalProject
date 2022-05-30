@@ -63,7 +63,7 @@ public class RepositoryTests : BaseTest
     {
         LoginStep _loginStep = new LoginStep(_driver);
         _loginStep.LoginWithUsernameAndPassword(Configurator.Admin.Username, Configurator.Admin.Password);
-        _mainPage.ChooseRepositoryButton.Click();
+        _mainPage.ChooseNewRepositoryButton.Click();
         _repositoryPage.Setting.Click();
         _settingPage.RepositoryName.Clear();
         _settingPage.RepositoryName.SendKeys("RenameRepository");
