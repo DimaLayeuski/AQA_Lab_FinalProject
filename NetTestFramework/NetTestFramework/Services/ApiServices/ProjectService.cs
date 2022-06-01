@@ -3,6 +3,7 @@ using System.Net;
 using System.Threading.Tasks;
 using NetTestFramework.Clients;
 using NetTestFramework.Models;
+using RestSharp;
 
 namespace NetTestFramework.Services.ApiServices;
 
@@ -15,28 +16,35 @@ public class ProjectService : IProjectService, IDisposable
         _client = client;
     }
 
-    public Task<Project> GetProject(int projectId)
+    public Task<Project> AddRepository(Project project)
     {
-        throw new NotImplementedException();
+        var request = new RestRequest("https://api.github.com/user/repos", Method.Post)
+            .AddJsonBody(project);
+        
+        return _client.ExecuteAsync<Project>(request);
+    }    
+    
+    public Task<Project> GetRepository(string owner, string repo)
+    {
+        var request = new RestRequest("https://api.github.com/repos/{owner}/{repo}", Method.Get)
+            .AddUrlSegment("owner",owner)
+            .AddUrlSegment("repo",repo);
+            
+        return _client.ExecuteAsync<Project>(request);
     }
 
-    public Task<Project> AddProject(Project project)
+    public HttpStatusCode DeleteRepository(string owner, string repo)
     {
-        throw new NotImplementedException();
+        var request = new RestRequest("https://api.github.com/repos/{owner}/{repo}", Method.Delete)
+            .AddUrlSegment("owner", owner)
+            .AddUrlSegment("repo", repo);
+            
+        return _client.ExecuteAsync(request).Result.StatusCode;
     }
-
-    public Task<Project> UpdateProject(Project project)
-    {
-        throw new NotImplementedException();
-    }
-
-    public HttpStatusCode DeleteProject(string projectId)
-    {
-        throw new NotImplementedException();
-    }
-
+    
     public void Dispose()
     {
-        throw new NotImplementedException();
+        _client.Dispose();
+        GC.SuppressFinalize(this);
     }
 }
