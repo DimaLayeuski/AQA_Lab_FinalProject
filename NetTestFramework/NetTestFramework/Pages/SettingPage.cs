@@ -15,7 +15,7 @@ public class SettingPage : BasePage
     private static readonly By ConfirmToDeleteButtonBy = By.XPath("(//button[@class='btn-danger btn btn-block'])[4]");
 
     public IWebElement RepositoryName => WaitService.WaitElementIsExist(RepositoryNameBy);
-    public IWebElement RenameButton => WaitService.WaitElementIsExist(RenameButtonBy);
+    public IWebElement RenameButton => WaitService.WaitElementToBeClickable(RenameButtonBy);
     public IWebElement DeleteRepositoryButton => WaitService.WaitElementIsExist(DeleteRepositoryButtonBy);
     public IWebElement ConfirmInputBlock => WaitService.WaitElementIsExist(ConfirmInputBlockBy);
     public IWebElement ConfirmToDeleteButton => WaitService.WaitElementIsExist(ConfirmToDeleteButtonBy);

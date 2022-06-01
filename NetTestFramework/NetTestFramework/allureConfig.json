@@ -2,7 +2,7 @@
   "allure": {
     "directory": "..\\..\\..\\allure-results",
     "links": [
-      "https://app.qase.io/project/AQA?view=1{tms}"
+      "https://app.qase.io/project/AQA?view=1{TMS}"
     ]
   }
 }

@@ -1,13 +1,19 @@
 using System.Net;
+using Allure.Commons;
 using FluentAssertions;
 using NetTestFramework.Faker;
 using NetTestFramework.Models;
 using NetTestFramework.Services;
 using NLog;
+using NUnit.Allure.Attributes;
+using NUnit.Allure.Core;
 using NUnit.Framework;
 
 namespace NetTestFramework.Tests.Api;
 
+[AllureNUnit]
+[AllureParentSuite("API")]
+[AllureSeverity(SeverityLevel.blocker)]
 public class DeleteRepositoryTestApi : BaseTestApi
 {
     private Project _project = null!;
@@ -21,6 +27,9 @@ public class DeleteRepositoryTestApi : BaseTestApi
     }
     
     [Test]
+    [Category("Negative")]
+    [AllureName("Delete repository with incorrect name")]
+    [AllureTms("TMS", "&suite=2&case=15")]
     [Order(1)]
     public void DeleteRepository_RepositoryIsNotFound()
     {
@@ -30,6 +39,9 @@ public class DeleteRepositoryTestApi : BaseTestApi
     }
 
     [Test]
+    [Category("Positive")]
+    [AllureName("Delete repository by name")]
+    [AllureTms("TMS", "&suite=2&case=14")]
     [Order(2)]
     public void DeleteRepository_RepositoryIsDeleted()
     {

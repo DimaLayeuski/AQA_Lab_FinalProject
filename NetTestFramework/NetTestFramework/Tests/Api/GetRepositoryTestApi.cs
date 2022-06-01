@@ -1,4 +1,5 @@
 using System.Net;
+using Allure.Commons;
 using FluentAssertions;
 using FluentAssertions.Execution;
 using NetTestFramework.Clients;
@@ -6,10 +7,15 @@ using NetTestFramework.Faker;
 using NetTestFramework.Models;
 using NetTestFramework.Services;
 using NLog;
+using NUnit.Allure.Attributes;
+using NUnit.Allure.Core;
 using NUnit.Framework;
 
 namespace NetTestFramework.Tests.Api;
 
+[AllureNUnit]
+[AllureParentSuite("API")]
+[AllureSeverity(SeverityLevel.blocker)]
 public class GetRepositoryTestApi : BaseTestApi
 {
     private readonly Logger _logger = LogManager.GetCurrentClassLogger(); 
@@ -24,6 +30,9 @@ public class GetRepositoryTestApi : BaseTestApi
     }
     
     [Test]
+    [Category("Positive")]
+    [AllureName("Get repository by name")]
+    [AllureTms("TMS", "&suite=2&case=16")]
     [Order(1)]
     public void GetRepositoryTest()
     {

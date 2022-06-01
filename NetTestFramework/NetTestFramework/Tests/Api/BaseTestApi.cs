@@ -6,7 +6,7 @@ namespace NetTestFramework.Tests.Api;
 
 public class BaseTestApi
 {
-    protected ProjectService? ProjectService;
+    public static ProjectService? ProjectService;
 
     [OneTimeSetUp]
     public void OneTimeSetUpApi()

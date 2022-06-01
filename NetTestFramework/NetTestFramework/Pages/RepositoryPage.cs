@@ -12,7 +12,7 @@ public class RepositoryPage : BasePage
     public readonly By NewFileLinkBy = By.XPath("//*[@class='js-navigation-open Link--primary']");
 
     public IWebElement CreateNewFileLink => WaitService.WaitElementIsExist(CreateNewFileLinkBy);
-    public IWebElement Setting => WaitService.WaitElementIsExist(SettingBy);
+    public IWebElement Setting => WaitService.WaitElementToBeClickable(SettingBy);
     public IWebElement NewFileLink => WaitService.WaitElementIsExist(NewFileLinkBy);
 
     public RepositoryPage(IWebDriver driver) : base(driver)

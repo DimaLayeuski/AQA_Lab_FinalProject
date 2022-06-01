@@ -44,14 +44,15 @@ public class RepositoryTests : BaseTest
     [Order(1)]
     [Category("Positive")]
     [AllureSuite("Repository-UI")]
+    [AllureName("Create new repository")]
     [AllureStep("Create repository with correct name")]
+    [AllureTms("TMS", "&suite=1&case=2")]
     public void CreateRepository_RepositoryIsCreated()
     {
         LoginStep _loginStep = new LoginStep(_driver);
         _loginStep.LoginWithUsernameAndPassword(Configurator.Admin.Username, Configurator.Admin.Password);
         _mainPage.CreateRepositoryButton.Click();
         _createNewRepositoryPage.RepositoryName.SendKeys(_nameOfRepository);
-        Thread.Sleep(500);
         _createNewRepositoryPage.CreateRepository.Click();
         _repositoryPage.PageOpened.Should().BeTrue();
     }
@@ -60,7 +61,9 @@ public class RepositoryTests : BaseTest
     [Order(2)]
     [Category("Positive")]
     [AllureSuite("Repository-UI")]
+    [AllureName("Rename repository")]
     [AllureStep("Rename repository")]
+    [AllureTms("TMS", "&suite=1&case=7")]
     public void RenameRepository_RepositoryIsRenamed()
     {
         LoginStep _loginStep = new LoginStep(_driver);
@@ -69,7 +72,6 @@ public class RepositoryTests : BaseTest
         _repositoryPage.Setting.Click();
         _settingPage.RepositoryName.Clear();
         _settingPage.RepositoryName.SendKeys(_newNameOfRepository);
-        Thread.Sleep(500);
         _settingPage.RenameButton.Click();
         _repositoryPage.PageOpened.Should().BeTrue();
     }
@@ -78,7 +80,9 @@ public class RepositoryTests : BaseTest
     [Order(3)]
     [Category("Positive")]
     [AllureSuite("Repository-UI")]
+    [AllureName("Delete repository")]
     [AllureStep("Delete repository")]
+    [AllureTms("TMS", "&suite=1&case=4")]
     public void DeleteRepository_RepositoryIsDeleted() 
     {
         LoginStep _loginStep = new LoginStep(_driver);
