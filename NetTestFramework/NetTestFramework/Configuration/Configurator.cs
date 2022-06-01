@@ -14,16 +14,6 @@ public class Configurator
     private static List<User> _users = null!;
     private static AppSettings _appSettings = null!;
     public static IConfiguration Configuration => s_configuration.Value;
-    // public static string BaseUrl => Configuration[nameof(BaseUrl)];
-    // public static string Username => Configuration[nameof(Username)];
-    // public static string Password => Configuration[nameof(Password)];
-    // public static string BrowserType => Configuration[nameof(BrowserType)];
-    // public static string FileName => Configuration[nameof(FileName)];
-    // public static string InputText => Configuration[nameof(InputText)];
-    // public static string InputNewText => Configuration[nameof(InputNewText)];
-    // public static string CommitNewFile => Configuration[nameof(CommitNewFile)];
-    // public static string ConfirmToDelete => Configuration[nameof(ConfirmToDelete)];
-    // public static int WaitTimeout => int.Parse(Configuration[nameof(WaitTimeout)]);
 
     public static User Admin =>
         _users.Find(user => user.UserType == UserType.Admin) ?? throw new NullReferenceException("Data not found. Check your appsetting.json file!");
