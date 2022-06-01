@@ -27,6 +27,18 @@ public class CreateNewRepositoryTestApi : BaseTestApi
         RestClientExtended.LastResponse.StatusCode.Should().Be(HttpStatusCode.Created);
     }
 
+    [Test]
+    [Order(2)]
+    [TestCase(0)]
+    public void AddRepositoryFailTest(int lenghtOfRepositoryName)
+    {
+        _project = new ProjectFaker(lenghtOfRepositoryName).Generate();
+        var actualProject = ProjectService.AddRepository(_project);
+        _project = actualProject.Result;
+        _logger.Info(_project.ToString());
+        RestClientExtended.LastResponse.StatusCode.Should().Be(HttpStatusCode.UnprocessableEntity);
+    }
+    
     [OneTimeTearDown]
     public void DeleteCreatedProject()
     {
