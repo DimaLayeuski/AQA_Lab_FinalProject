@@ -5,9 +5,14 @@ namespace NetTestFramework.Faker;
 
 public sealed class ProjectFaker : Faker<Project>
 {
-    public ProjectFaker(int nameLenght = 10)
+    public ProjectFaker(int lenghtOfRepositoryName)
     {
-        RuleFor(b => b.Name, f => f.Random.String2(nameLenght));
-        RuleFor(b => b.Description, f => f.Company.CatchPhrase());
+        RuleFor(n => n.Name, f => f.Random.String2(lenghtOfRepositoryName));
+        RuleFor(d => d.Description, f => f.Company.CatchPhrase());
+        RuleFor(h => h.Homepage, f => "https://github.com");
+        RuleFor(p => p.Private, f => f.Random.Bool());
+        RuleFor(i => i.HasIssues, f => f.Random.Bool());
+        RuleFor(p => p.HasProjects, f => f.Random.Bool());
+        RuleFor(w => w.HasWiki, f => f.Random.Bool());
     }
 }
