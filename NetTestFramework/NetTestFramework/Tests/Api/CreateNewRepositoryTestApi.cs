@@ -17,7 +17,7 @@ public class CreateNewRepositoryTestApi : BaseTestApi
 
     [Test]
     [Order(1)]
-    [TestCase(5)]
+    [TestCase(10)]
     public void CreateNewRepository_NewRepositoryIsCreated(int lenghtOfRepositoryName)
     {
         _project = new ProjectFaker(lenghtOfRepositoryName).Generate();

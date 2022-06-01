@@ -7,7 +7,8 @@ namespace NetTestFramework.Pages;
 public class MainPage : BasePage
 {
     private const string URI = "/";
-    private static readonly By CreateRepositoryButtonBy = By.XPath("(//*[@class='btn btn-sm btn-primary'])[1]");
+    //private static readonly By CreateRepositoryButtonBy = By.XPath("(//*[@class='btn btn-sm btn-primary'])[1]");
+    private static readonly By CreateRepositoryButtonBy = By.XPath("(//*[@class='btn btn-primary mr-2 mb-2'])[1]");
     private static readonly By ChooseNewRepositoryButtonBy = By.XPath("(//*[@href='/DimaLayeuskiAQA/NewRepository'])[2]");
 
     private static readonly By ChooseRenameRepositoryButtonBy =

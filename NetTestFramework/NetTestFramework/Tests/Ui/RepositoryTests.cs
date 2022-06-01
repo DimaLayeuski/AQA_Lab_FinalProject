@@ -24,8 +24,10 @@ public class RepositoryTests : BaseTest
     private CreateNewRepositoryPage _createNewRepositoryPage = null!;
     private RepositoryPage _repositoryPage = null!;
     private SettingPage _settingPage = null!;
-
-
+    
+    private string _nameOfRepository = "NewRepository";
+    private string _newNameOfRepository = "RenameRepository";
+    
     [SetUp]
     public void InstantiateRequiredPages()
     {
@@ -48,7 +50,7 @@ public class RepositoryTests : BaseTest
         LoginStep _loginStep = new LoginStep(_driver);
         _loginStep.LoginWithUsernameAndPassword(Configurator.Admin.Username, Configurator.Admin.Password);
         _mainPage.CreateRepositoryButton.Click();
-        _createNewRepositoryPage.RepositoryName.SendKeys("NewRepository");
+        _createNewRepositoryPage.RepositoryName.SendKeys(_nameOfRepository);
         Thread.Sleep(500);
         _createNewRepositoryPage.CreateRepository.Click();
         _repositoryPage.PageOpened.Should().BeTrue();
@@ -66,7 +68,7 @@ public class RepositoryTests : BaseTest
         _mainPage.ChooseNewRepositoryButton.Click();
         _repositoryPage.Setting.Click();
         _settingPage.RepositoryName.Clear();
-        _settingPage.RepositoryName.SendKeys("RenameRepository");
+        _settingPage.RepositoryName.SendKeys(_newNameOfRepository);
         Thread.Sleep(500);
         _settingPage.RenameButton.Click();
         _repositoryPage.PageOpened.Should().BeTrue();
@@ -84,9 +86,9 @@ public class RepositoryTests : BaseTest
         _mainPage.ChooseRenameRepositoryButton.Click();
         _repositoryPage.Setting.Click();
         _settingPage.DeleteRepositoryButton.Click();
-        _settingPage.ConfirmInputBlock.SendKeys("DimaLayeuskiAQA/RenameRepository");
+        _settingPage.ConfirmInputBlock.SendKeys(Configurator.Admin.Username+"/"+_newNameOfRepository);
         _settingPage.ConfirmToDeleteButton.Click();
         _mainPage.PageOpened.Should().BeTrue();
-        Assert.AreEqual(_driver.FindElements(_mainPage.CountOfLinkToRepositoriesBy).Count,2);
+        Assert.AreEqual(_driver.FindElements(_mainPage.CountOfLinkToRepositoriesBy).Count,0);
     }
 }
