@@ -19,8 +19,8 @@ namespace NetTestFramework.Clients
         {
           var options = new RestClientOptions(Configurator.AppSettings.ApiUrl ?? throw new InvalidOperationException());
           _client = new RestClient(options);
-          //Debug.Assert(Configurator.Admin != null, "Configurator.Admin != null");
-          _client.Authenticator =new HttpBasicAuthenticator(Configurator.Admin.Username, Configurator.Admin.Password);
+          Debug.Assert(Configurator.Admin != null, "Configurator.Admin != null");
+          _client.Authenticator =new HttpBasicAuthenticator(Configurator.Admin.Username, Configurator.Admin.Token);
         }
 
         public async Task<T> ExecuteAsync<T>(RestRequest request)
