@@ -25,7 +25,8 @@ public class CreateNewRepositoryTestApi : BaseTestApi
     [Category("Positive")]
     [AllureName("Create a new repository with correct lenght of name")]
     [AllureTms("TMS", "&suite=2&case=12")]
-    [TestCase(10)]
+    [TestCase(1)]
+    [TestCase(100)]
     public void CreateNewRepository_NewRepositoryIsCreated(int lenghtOfRepositoryName)
     {
         _project = new ProjectFaker(lenghtOfRepositoryName).Generate();
