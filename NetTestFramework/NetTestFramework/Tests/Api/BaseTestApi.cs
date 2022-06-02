@@ -6,10 +6,10 @@ namespace NetTestFramework.Tests.Api;
 
 public class BaseTestApi
 {
-    protected ProjectService? ProjectService;
+    public static ProjectService? ProjectService;
 
     [OneTimeSetUp]
-    public void OneTimeSetUpApi()
+    public void LoginWithUsernameAndToken()
     {
         var restClient = new RestClientExtended();
         ProjectService = new ProjectService(restClient);

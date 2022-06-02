@@ -34,7 +34,9 @@ public class AuthorizationTests : BaseTest
     [Test]
     [Category("Positive")]
     [AllureSuite("Authorization-UI")]
+    [AllureName("Authorization with correct data")]
     [AllureStep("Authorize using correct data")]
+    [AllureTms("TMS", "&suite=5&case=1")]
     public void Authorization_WithCorrectData_MainPageOpened()
     {
         LoginStep _loginStep = new LoginStep(_driver);
@@ -45,7 +47,9 @@ public class AuthorizationTests : BaseTest
     [Test]
     [Category("Negative")]
     [AllureSuite("Authorization-UI")]
+    [AllureName("Authorization test with incorrect data")]
     [AllureStep("Authorize using incorrect data")]
+    [AllureTms("TMS", "&suite=5&case=11")]
     [TestCase("DimaLayeuskiAQA","11111")]
     [TestCase("", "")]
     public void Authorization_WithIncorrectData_FaildLoginPageOpened(string username, string password)

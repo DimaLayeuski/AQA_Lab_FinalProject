@@ -22,7 +22,6 @@ public class CreateRepositoryStep
     {
         _mainPage.CreateRepositoryButton.Click();
         _createNewRepositoryPage.RepositoryName.SendKeys(name);
-        Thread.Sleep(500);
         _createNewRepositoryPage.CreateRepository.Click();
         return new RepositoryPage(_driver);
     }

@@ -1,4 +1,3 @@
-using System.Threading;
 using Allure.Commons;
 using FluentAssertions;
 using NetTestFramework.Pages;
@@ -42,7 +41,9 @@ public class FileTests : BaseTest
     [Order(1)]
     [Category("Positive")]
     [AllureSuite("Workspace-UI")]
+    [AllureName("Create new file into repository")]
     [AllureStep("Create new file with correct name")]
+    [AllureTms("TMS", "&suite=2&case=8")]
     public void CreateFile_FileIsCreated()
     {
         LoginStep _loginStep = new LoginStep(_driver);
@@ -65,7 +66,9 @@ public class FileTests : BaseTest
     [Order(2)]
     [Category("Positive")]
     [AllureSuite("Workspace-UI")]
+    [AllureName("Change file into repository")]
     [AllureStep("Change file")]
+    [AllureTms("TMS", "&suite=2&case=9")]
     public void ChangeFile_FileIsChanged()
     {
         LoginStep _loginStep = new LoginStep(_driver);
@@ -87,7 +90,9 @@ public class FileTests : BaseTest
     [Order(3)]
     [Category("Positive")]
     [AllureSuite("Workspace-UI")]
+    [AllureName("Delete file into repository")]
     [AllureStep("Delete file")]
+    [AllureTms("TMS", "&suite=2&case=10")]
     public void DeleteFile_FileIsDeleted()
     {
         LoginStep _loginStep = new LoginStep(_driver);

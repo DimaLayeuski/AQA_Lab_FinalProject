@@ -13,7 +13,7 @@ public class CreateNewRepositoryPage : BasePage
     private static readonly By CreateRepositoryBy = By.XPath("//*[@class='btn-primary btn']");
 
     public IWebElement RepositoryName => WaitService.WaitElementIsExist(RepositoryNameBy);
-    public IWebElement CreateRepository => WaitService.WaitElementIsExist(CreateRepositoryBy);
+    public IWebElement CreateRepository => WaitService.WaitElementToBeClickable(CreateRepositoryBy);
 
     public CreateNewRepositoryPage(IWebDriver driver) : base(driver)
     {

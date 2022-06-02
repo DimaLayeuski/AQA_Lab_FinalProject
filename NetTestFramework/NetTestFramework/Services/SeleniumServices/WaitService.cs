@@ -23,9 +23,9 @@ public class WaitService
         _fluentWait.IgnoreExceptionTypes(typeof(NoSuchElementException));
     }
 
-    public IWebElement WaitElementIsVisible(By locator)
+    public IWebElement WaitElementToBeClickable(By locator)
     {
-        return _wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(locator));
+        return _wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(locator));
     }
     
     public static IWebElement WaitElementIsExist(By locator)
