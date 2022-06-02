@@ -9,7 +9,7 @@ public class BaseTestApi
     public static ProjectService? ProjectService;
 
     [OneTimeSetUp]
-    public void OneTimeSetUpApi()
+    public void LoginWithUsernameAndToken()
     {
         var restClient = new RestClientExtended();
         ProjectService = new ProjectService(restClient);
