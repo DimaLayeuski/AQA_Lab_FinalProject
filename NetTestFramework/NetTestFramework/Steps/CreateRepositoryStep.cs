@@ -1,6 +1,4 @@
-using System.Threading;
 using NetTestFramework.Pages;
-using NetTestFramework.Services;
 using OpenQA.Selenium;
 
 namespace NetTestFramework.Steps;
